@@ -12,6 +12,7 @@ export async function generateStaticParams() {
   const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }));
   return ids;
 }
+// export const revalidate = 3600;
 export default async function Page({ params }) {
   const cabin = await getCabin(params.cabinId);
 
