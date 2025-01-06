@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import CabinsList from '../_components/CabinsList';
 import Spinner from '../_components/Spinner';
+import Filter from '../_components/Filter';
 
 export const metadata = {
   title: 'Cabins',
@@ -21,8 +22,11 @@ export default async function Page({ searchParams }) {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
 
-      <Suspense fallback={<Spinner></Spinner>}>
+      <Suspense fallback={<Spinner></Spinner>} key={filter}>
         <CabinsList filter={filter}></CabinsList>
       </Suspense>
     </div>
