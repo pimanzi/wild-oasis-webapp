@@ -1,5 +1,4 @@
-import { getCabin } from '@/app/_lib/data-service';
-import { getBookedDatesByCabinId } from '@/starter/others/data-service';
+import { getBookedDatesByCabinId, getCabin } from "@/app/_lib/data-service";
 
 export async function GET(request, { params }) {
   const { cabinId } = params;
@@ -10,13 +9,10 @@ export async function GET(request, { params }) {
       getBookedDatesByCabinId(cabinId),
     ]);
 
-    return Response.json({
-      cabin,
-      bookedDates,
-    });
+    return Response.json({ cabin, bookedDates });
   } catch {
-    return Response.json({
-      message: 'Cabin could not be found',
-    });
+    return Response.json({ message: "Cabin not found" });
   }
 }
+
+// export async function POST() {}
