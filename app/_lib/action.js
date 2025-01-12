@@ -2,6 +2,7 @@
 import { format } from 'date-fns';
 import { auth, signIn, signOut } from '../_components/auth';
 import { supabase } from './supabase';
+import { revalidatePath } from 'next/cache';
 export async function signInAction() {
   await signIn('google', { redirectTo: '/account' });
 }
@@ -30,4 +31,6 @@ export async function updateGuest(formData) {
   if (error) {
     throw new Error('Guest could not be updated');
   }
+
+  revalidatePath('/account/profile');
 }
